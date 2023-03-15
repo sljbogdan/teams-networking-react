@@ -1,5 +1,5 @@
 export const TeamsTable = (props) => (
-    <table border="1">
+    <table border={props.border}>
       <thead>
         <tr>
           <th>Members</th>

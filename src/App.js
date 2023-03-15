@@ -19,7 +19,7 @@ function App() {
     <div>
       <h1>Teams Networking</h1>
       <div>Search</div>
-      <TeamsTable teams={teams} />
+      <TeamsTable teams={teams} border={2}/>
     </div>
   );
 }

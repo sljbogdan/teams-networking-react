@@ -1,5 +1,21 @@
-export const TeamsTable = ({teams, border}) => (
-    <table border={border}>
+function getValues(){
+  const members = document.querySelector('[name=members]').value;
+  const name = document.querySelector('[name=name]').value;
+  const url = document.querySelector('[name=url]').value;
+  return  {
+      members, 
+      name,
+      url
+  };
+}
+
+export const TeamsTable = ({teams, border, onSubmit}) => (
+    <form onSubmit={e =>{
+      e.preventDefault();
+      const values = getValues();
+      onSubmit(values);
+    }}> 
+      <table border={border}>
       <thead>
         <tr>
           <th>Members</th>
@@ -23,11 +39,12 @@ export const TeamsTable = ({teams, border}) => (
       </tbody>
       <tfoot>
         <tr>
-          <td><input type="text" name="members" placeholder="enter Members" /></td>
-          <td><input type="text" name="name" placeholder="enter Project name" /></td>
-          <td><input type="text" name="url" placeholder="enter Project URL" /></td>
-          <td><button>Save</button></td>
+          <td><input type="text" required name="members" placeholder="enter Members" /></td>
+          <td><input type="text" required name="name" placeholder="enter Project name" /></td>
+          <td><input type="text" required name="url" placeholder="enter Project URL" /></td>
+          <td><button type="submit">Save</button></td>
         </tr>
       </tfoot>
-    </table>
+      </table>
+    </form>
   );

@@ -9,7 +9,7 @@ function getValues(){
   };
 }
 
-export const TeamsTable = ({teams, border, onSubmit}) => (
+export const TeamsTable = ({teams, border, onSubmit, onDelete}) => (
     <form onSubmit={e =>{
       e.preventDefault();
       const values = getValues();
@@ -31,7 +31,9 @@ export const TeamsTable = ({teams, border, onSubmit}) => (
             <td>{team.name}</td>
             <td><a target="_blank" href={team.url}>Github</a></td>
             <td>
-              <a href="#" className="delete-row" data-id="{team.id}">&#10006;</a>
+              <a href="#" className="delete-row"  onClick ={e => {
+                onDelete(team.id);
+              }}>&#10006;</a>
               <a href="#" className="edit-row" data-id="{team.id}">&#9998;</a>
             </td>
           </tr>

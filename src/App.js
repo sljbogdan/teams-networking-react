@@ -11,26 +11,18 @@ constructor(props) {
   }
 }
 
-componentDidMount() {
-  console.warn('mount');
-  setTimeout(()=>{
-    console.warn("loaded");
-    this.setState({
-      teams: [
-        {
-          "name": "CV",
-          "members": "Salajan Bogdan",
-          "url": "https://github.com/sljbogdan",
-        },
-        {
-          "name": "CV",
-          "members": "Bonat Paula",
-          "url": ""
-        }
-      ]
-    })
-  }, 2000)
-  
+  componentDidMount() {
+    this.load();
+  }
+
+ load(){
+    fetch("http://localhost:3000/teams-json")
+        .then(r => r.json())
+        .then(teams => {
+            this.setState({
+              teams
+            });
+        });
 }
 
   render (){

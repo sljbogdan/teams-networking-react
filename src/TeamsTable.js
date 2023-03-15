@@ -1,5 +1,5 @@
-export const TeamsTable = (props) => (
-    <table border={props.border}>
+export const TeamsTable = ({teams, border}) => (
+    <table border={border}>
       <thead>
         <tr>
           <th>Members</th>
@@ -9,7 +9,7 @@ export const TeamsTable = (props) => (
         </tr>
       </thead>
       <tbody>
-        {props.teams.map((team, index) => (
+        {teams.map((team, index) => (
           <tr key={index}>
             <td>{team.members.split(/\s*,\s*/).join("<br>")}</td>
             <td>{team.name}</td>

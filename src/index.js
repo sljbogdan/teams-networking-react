@@ -11,16 +11,19 @@ const rootReducer = (state = {teams: []}, action) => {
   switch(action.type) {
     case 'TEAMS_LOADED': {
       return {
+        ...state,
         teams: action.teams
       }
     }
     case 'TEAM_ADDED': {
       return {
-        teams: state.teams.concat(action.team)
+        ...state,
+        teams: [...state.teams, action.team]
       };
     }
     case 'TEAM_REMOVED': {
       return {
+        ...state,
         teams: state.teams.filter(team => team.id != action.id)
       };
     }
@@ -44,7 +47,6 @@ function load(){
           });
 };
 load();
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

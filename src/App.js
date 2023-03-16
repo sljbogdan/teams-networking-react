@@ -7,18 +7,13 @@ import { TeamsTable } from "./TeamsTable";
 class App extends Component{
   constructor(props) {
     super(props);
-    this.state = {
-      teams: []
-    }
   }
 
   componentDidMount() {
     this.load();
   }
 
- load(){
-   
-  }
+  load(){};
 
   add(team){
     console.warn("values", team);
@@ -55,8 +50,6 @@ class App extends Component{
         });
   }
 
-
-
   render (){
     return (
       <div>
@@ -84,7 +77,6 @@ const mapDispatchToProps = dispatch => ({
   onAdd: team => dispatch({type: 'TEAM_ADDED', team }),
   onDelete: id => dispatch({type: 'TEAM_REMOVED', id })
 });
-
 
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 
